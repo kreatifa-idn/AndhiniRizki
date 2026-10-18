@@ -265,7 +265,7 @@
             scroll-snap-type: none !important;
         }
 
-        /* --- LONG ROLL BACKGROUND CONTAINER (UKURAN RASIO 9:112 = 7 HALAMAN 9:16) --- */
+        /* --- LONG ROLL BACKGROUND CONTAINER (UKURAN RASIO PRESISI 9:112 = 7 HALAMAN 9:16) --- */
         #content-roll-wrapper {
             position: relative;
             width: 100%;
@@ -390,14 +390,11 @@
             50% { opacity: 0.9; transform: translateX(-50%) translateY(4px); }
         }
 
-        /* --- STYLES ELEMEN HALAMAN DENGAN RASIO 9:16 FULL SEHALAMAN --- */
-        .page {
+        /* --- STYLES ELEMEN HALAMAN DENGAN RASIO PRESISI SAMA DENGAN BACKGROUND ROLL --- */
+        #content-roll-wrapper .page {
             position: relative;
             width: 100%;
-            height: 100vh;
-            height: 100dvh;
-            min-height: 100vh;
-            min-height: 100dvh;
+            height: calc(100% / 7); /* Tepat 1/7 dari total panjang bgroll (rasio 9:16 per halaman) */
             background-color: transparent;
             overflow: hidden;
             display: flex;
@@ -411,10 +408,8 @@
         .png-asset { 
             position: relative; 
             width: 100%;
-            height: auto;
-            max-height: 100vh;
-            max-height: 100dvh;
-            object-fit: contain; /* Pas kiri kanan dan proporsional atas-bawah tanpa tertarik */
+            height: 100%;
+            object-fit: contain; /* Pas kiri-kanan dan proporsional di hp maupun laptop */
             opacity: 0; 
             z-index: 5; 
             display: block;
@@ -424,12 +419,6 @@
 
         /* Override Khusus Halaman 2 untuk Countdown */
         #page2 {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            height: 100dvh;
-            min-height: 100vh;
-            min-height: 100dvh;
             --cd-top-position: 18%;
             --cd-width: 85%;
             --cd-bg-color:#504a00;
@@ -505,20 +494,30 @@
             background-color: transparent !important;
         }
 
-        /* HALAMAN 11 & 12: AMPLOP & RSVP (Background menggunakan background.png) */
+        /* HALAMAN 11 & 12: AMPLOP & RSVP (Outside roll flow) */
+        .normal-flow-page {
+            position: relative; 
+            z-index: 6; 
+            box-shadow: none;
+            overflow: hidden;
+            background-color: transparent;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
         #page11 { 
             height: auto; 
             min-height: 100vh; 
             min-height: 100dvh; 
             padding-top: 40px; 
             padding-bottom: 20px;
-            justify-content: center; 
-            align-items: center;
             background-image: url('bgr.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            position: relative;
         }
 
         .gift-header-text {
@@ -551,20 +550,17 @@
             padding: 0 10px;
         }
 
-        /* --- PERBAIKAN HALAMAN RSVP AGAR TIDAK BANYAK KOSONG --- */
+        /* --- PERBAIKAN HALAMAN RSVP --- */
         #page12 { 
             height: auto; 
             min-height: 100vh; 
             min-height: 100dvh; 
             padding-top: 40px; 
             padding-bottom: 50px;
-            justify-content: center; 
-            align-items: center;
             background-image: url('bg.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            position: relative;
         }
 
         .rsvp-header-title {
@@ -578,15 +574,10 @@
             position: relative;
         }
 
-        .normal-flow-page {
-            position: relative; z-index: 6; 
-            box-shadow: none;
-            overflow: hidden;
-            background-color: transparent;
-        }
-
-        /* --- HALAMAN 13 (BACKGROUND TERIMA KASIH PAKAI PNG: bg3.png) --- */
+        /* --- HALAMAN 13 (BACKGROUND TERIMA KASIH PAKAI PNG: bg1.jpg) --- */
         #page13 {
+            min-height: 100vh;
+            min-height: 100dvh;
             background-image: url('bg1.jpg') !important;
             background-size: cover !important;
             background-position: center !important;
@@ -675,7 +666,7 @@
         .p6-delay-1 { transition-delay: 0.3s; }
         .p6-delay-2 { transition-delay: 0.6s; }
 
-        /* --- STYLES AMPLOP DIGITAL (BALOK CREAM, TEKS MAROON & ANIMASI) --- */
+        /* --- STYLES AMPLOP DIGITAL --- */
         .gift-container {
             position: relative;
             width: 85%;
@@ -767,7 +758,7 @@
             transform: translateY(0) !important;
         }
 
-        /* --- RSVP FORM & COMMENTS (BALOK CREAM, TEKS MAROON) --- */
+        /* --- RSVP FORM & COMMENTS --- */
         .rsvp-form-container {
             width: 85%;
             max-width: 380px;
