@@ -124,13 +124,14 @@
             background-repeat: no-repeat;
             display: flex; 
             flex-direction: column; 
-            justify-content: space-between; /* Pas di paling atas dan area bawah */
+            justify-content: space-between; 
             align-items: center;     
             text-align: center; 
-            padding: 0 0 90px 0; /* Dinaikkan dengan menambah padding bawah */
+            padding: 20px 0 30px 0; /* Padding disesuaikan agar muat di semua layar */
             z-index: 50;
             transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1), opacity 1.2s ease;
-            overflow: hidden;
+            overflow-y: auto; /* Bisa di-scroll jika layar laptop sangat pendek */
+            overflow-x: hidden;
         }
 
         /* Kelas untuk mentrigger animasi buka cover ke bawah */
@@ -153,7 +154,7 @@
             position: relative;
             width: var(--cover-elem2-width);
             max-width: 100%;
-            max-height: none;
+            max-height: 55vh; /* Dibatasi agar tidak memakan ruang tombol open di laptop */
             height: auto;
             object-fit: contain;
             opacity: 0;
@@ -182,9 +183,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             padding: 0 15px;
             z-index: 3;
+            margin-top: auto; /* Memastikan posisi rapat ke bawah tanpa terpotong */
         }
 
         .guest-greeting-wrapper {
